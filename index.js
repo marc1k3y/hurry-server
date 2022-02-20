@@ -2,8 +2,9 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const shelude = require("node-schedule")
+require('dotenv').config()
 
-mongoose.connect('mongodb+srv://marc1k3y:r4k4m4k4f0@hurryapp.5lsa5.mongodb.net/HurryApp')
+mongoose.connect(process.env.DB_URL)
 mongoose.Promise = global.Promise
 
 const app = express()
