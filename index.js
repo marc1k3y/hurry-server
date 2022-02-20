@@ -27,6 +27,6 @@ shelude.scheduleJob('20 4 * * *', () => {
     .catch((err) => console.log(err))
 })
 
-app.listen(process.env.port || 4000, function () {
+app.listen(process.env.PORT || 4000, function () {
   console.log('Server started')
 })
