@@ -149,15 +149,6 @@ router.get('/info', (req, res) => {
     .catch(() => res.sendStatus(404))
 })
 
-router.get('/city', (req, res) => {
-  User.findOne({ _id: req.query.uid })
-    .then((user) => {
-      const { city } = user.info
-      res.send(city)
-    })
-    .catch(() => res.sendStatus(404))
-})
-
 router.post('/sendOrder', (req, res) => {
   const { chatId, order, pTime, bid, sum, sw } = req.body
   Bus.findOne({ _id: bid })
