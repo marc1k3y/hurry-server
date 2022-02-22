@@ -134,7 +134,7 @@ router.put('/menu', (req, res) => {
 router.put('/popPos', (req, res) => {
   Bus.findOne({ _id: req.query.bid })
     .then((bus) => {
-      bus.menu = bus.menu.filter(pos => pos.title !== req.body.target)
+      bus.menu = bus.menu.filter(pos => pos.id !== req.body.target)
       bus.save()
       res.sendStatus(200)
     })
