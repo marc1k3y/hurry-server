@@ -1,7 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const shelude = require("node-schedule")
+// const shelude = require("node-schedule")
+const cron = require('node-cron')
 require('dotenv').config()
 
 mongoose.connect(process.env.DB_URL)
@@ -21,11 +22,17 @@ app.use((err, req, res, next) => {
   err && res.status(422).send({ error: err.message })
 })
 
-shelude.scheduleJob('20 4 * * *', () => {
+cron.schedule('* * * * *', () => {
   User.updateMany({}, { $set: { votes: 2 } })
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
-})
+});
+
+// shelude.scheduleJob('20 4 * * *', () => {
+//   User.updateMany({}, { $set: { votes: 2 } })
+//     .then((res) => console.log(res))
+//     .catch((err) => console.log(err))
+// })
 
 app.listen(process.env.PORT || 4000, function () {
   console.log('Server started')
