@@ -18,7 +18,6 @@
     "generate-password": "^1.7.0",
     "mongoose": "^6.2.0",
     "node-cron": "^3.0.0",
-    "node-schedule": "^2.1.0",
     "node-telegram-bot-api": "^0.56.0"
   },
   "devDependencies": {
