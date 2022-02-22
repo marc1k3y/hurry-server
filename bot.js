@@ -54,6 +54,11 @@ async function forgotPass(chatId, password) {
   }
 }
 
+// start 
+bot.onText(/\/register (.+)/, (msg) => {
+  bot.sendMessage(msg.chat.id, 'Hello, please paste your clipboard me.')
+})
+
 // register
 bot.onText(/\/register (.+)/, (msg) => {
   const chatId = msg.chat.id
