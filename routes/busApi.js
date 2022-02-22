@@ -112,11 +112,9 @@ router.get('/info', (req, res) => {
 router.get('/checkInfo', (req, res) => {
   Bus.findOne({ _id: req.query.bid })
     .then((bus) => {
-      const { title } = bus.info
-      const { country, city, street, build } = bus.info.addr
-      title && country && city && street && build
-        ? res.sendStatus(200)
-        : res.sendStatus(404)
+      const { tgChatId } = bus
+      const { title, addr } = bus.info
+      res.send({ tgChatId, title, addr })
     })
     .catch(() => res.sendStatus(404))
 })
