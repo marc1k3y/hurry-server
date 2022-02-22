@@ -114,7 +114,9 @@ router.get('/checkInfo', (req, res) => {
     .then((bus) => {
       const { tgChatId } = bus
       const { title, addr } = bus.info
-      res.send({ tgChatId, title, addr })
+      const info = !!title && !!addr
+      const tg = !!tgChatId
+      res.send({ info, tg })
     })
     .catch(() => res.sendStatus(404))
 })
