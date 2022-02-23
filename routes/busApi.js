@@ -151,7 +151,7 @@ router.get('/menuPage', (req, res) => {
 })
 
 router.get('/queryShops', (req, res) => {
-  const { query } = req.body
+  const { query } = req.query
   Bus.find({ "info.title": { "$regex": query, "$options": "i" } })
     .then((buses) => {
       res.send(buses)
