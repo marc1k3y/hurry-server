@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
   err && res.status(422).send({ error: err.message })
 })
 
-cron.schedule('0 0 0 * * *', () => {
+cron.schedule('0 20 4 * * *', () => {
   User.updateMany({}, { $set: { votes: 2 } })
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
