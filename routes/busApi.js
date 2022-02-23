@@ -150,6 +150,14 @@ router.get('/menuPage', (req, res) => {
     .catch(() => res.sendStatus(404))
 })
 
+router.get('/queryShops', (req, res) => {
+  const { query } = req.body
+  Bus.find({ "authors": { "$regex": query, "$options": "i" } })
+    .then((buses) => {
+      res.send(buses)
+    })
+})
+
 router.get('/locShops', (req, res) => {
   const { skip, limit, city } = req.query
   Bus.find({ "info.addr.city": city }).skip(skip).limit(limit)
