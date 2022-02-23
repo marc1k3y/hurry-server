@@ -152,7 +152,7 @@ router.get('/menuPage', (req, res) => {
 
 router.get('/queryShops', (req, res) => {
   const { query } = req.body
-  Bus.find({ "authors": { "$regex": query, "$options": "i" } })
+  Bus.find({ "info.title": { "$regex": query, "$options": "i" } })
     .then((buses) => {
       res.send(buses)
     })
