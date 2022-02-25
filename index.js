@@ -21,11 +21,11 @@ app.use((err, req, res, next) => {
   err && res.status(422).send({ error: err.message })
 })
 
-cron.schedule('* 0 12 * * *', () => {
+cron.schedule('* 40 16 * * *', () => {
   User.updateMany({}, { $set: { votes: 2 } })
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
-})
+}, { timezone: 'Europe/Moscow' })
 
 app.listen(process.env.PORT || 4000, function () {
   console.log('Server started')
