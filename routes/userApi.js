@@ -150,6 +150,7 @@ router.get('/info', (req, res) => {
 })
 
 router.post('/sendOrder', (req, res) => {
+  console.log(req.body);
   const { chatId, order, pTime, bid, sum, sw } = req.body
   Bus.findOne({ _id: bid })
     .then((bus) => {
